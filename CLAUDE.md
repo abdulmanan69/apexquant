@@ -59,6 +59,13 @@ Web app (2026-11-11), webapp/: FastAPI + one static page, see README.md.
   gate result are unchanged; every forecast shows the gate caveat.
 - football-data.co.uk dropped Pinnacle columns after January 2026. New season files
   and fixtures.csv carry Bet365, market average and max only.
+- Fixture list comes from openfootball (full season, keyless). Team names are mapped
+  to football-data names by matching played matches on date and score; fuzzy fallback
+  only before any match is played. openfootball scores lag by weeks, so results always
+  come from the football-data CSVs.
+- GitHub Pages: webapp/build_static.py writes docs/; .github/workflows/feed.yml refits
+  every 6 hours and commits. Forecast math runs in the browser from ratings.json.
+  ApexQuant is its own git repo (initialised 2026-11-11), separate from the parent site.
 - Phase 2 and Phase 3 pipeline fixes still not started. No staking, no bets table.
 
 ## Build order
