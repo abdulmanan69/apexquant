@@ -1,0 +1,33 @@
+/* styles3d.css - ApexQuant terminal theme.
+   Flattened from the whitepaper's glassmorphic theme (unslop pass, 2026-11-10):
+   same brand colours (#0F172A navy, #10B981 emerald), no blur, no glow, no gradients.
+   Depth comes from surface steps and hairlines. Danger red only for the failed-gate banner. */
+:root{
+  --bg:#0F172A;            /* page */
+  --sidebar:#0B1220;       /* deepest surface */
+  --panel:#131C2E;         /* card */
+  --raised:#1A2538;        /* input, active row */
+  --edge:rgba(226,232,240,.08);
+  --edge-strong:rgba(226,232,240,.16);
+  --emerald:#10B981; --text:#E2E8F0; --text-2:#A3ACBF; --muted:#7A8599; --danger:#F43F5E;
+  --sans:Inter,"Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono","Cascadia Mono","DejaVu Sans Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/20px var(--sans);min-height:100vh;
+  font-variant-numeric:tabular-nums}
+.scene{max-width:1440px;margin:0 auto;padding:24px 32px 48px}
+.card{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:20px}
+.card h3{margin:0 0 4px;font:500 13px/20px var(--sans);color:var(--text-2)}
+.metric{font:500 22px/28px var(--sans);color:var(--text)}
+.veto{border-color:rgba(244,63,94,.45)}
+.veto .metric{color:var(--danger)}
+.btn{height:36px;padding:0 16px;border:1px solid var(--edge-strong);border-radius:8px;cursor:pointer;
+  background:var(--text);color:#0F172A;font:500 14px/20px var(--sans);
+  transition:background-color .15s var(--ease),color .15s var(--ease),transform .12s var(--ease)}
+.btn:hover{background:#FFFFFF}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible,.tab:focus-visible,.srcbtn:focus-visible,select:focus-visible,input:focus-visible{
+  outline:2px solid rgba(16,185,129,.6);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}

@@ -1,0 +1,111 @@
+/* app.css - layout on top of styles3d.css. 4px grid. One accent, used where it means something. */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;height:64px;margin-bottom:16px}
+h1{margin:0;font:500 18px/24px var(--sans);letter-spacing:0}
+h1 .muted{font-weight:400;font-size:14px}
+.muted{color:var(--muted)}
+.sec{color:var(--text-2)}
+.small{font-size:12px;line-height:16px}
+.hidden{display:none !important}
+.tabs{display:flex;gap:4px}
+.tab{height:36px;padding:0 14px;background:transparent;color:var(--text-2);border:1px solid transparent;border-radius:8px;cursor:pointer;
+  font:500 14px/20px var(--sans);transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease)}
+.tab:hover{background:var(--panel);color:var(--text)}
+.tab.active{background:var(--raised);border-color:var(--edge-strong);color:var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.page{display:none}
+.page.active{display:block}
+.card{margin-bottom:16px}
+.card .cap{margin:0 0 12px;font-size:12px;line-height:16px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-21{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.grid-32{display:grid;grid-template-columns:3fr 2fr;gap:16px}
+.stack{display:flex;flex-direction:column;gap:16px}
+.stack .card{margin:0}
+@media (max-width:960px){.grid2,.grid3,.grid-21,.grid-32{grid-template-columns:1fr}}
+
+/* gate banner: the only place the danger red lives */
+.banner{display:flex;flex-direction:column;gap:4px;padding:20px 24px}
+.banner .metric{margin-bottom:4px}
+.banner.pass{border-color:rgba(16,185,129,.45)}
+.banner.pass .metric{color:var(--emerald)}
+
+/* controls: one 36px row */
+.row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin:0 0 12px}
+.row:last-child{margin-bottom:0}
+label{display:flex;flex-direction:column;gap:4px;font-size:12px;line-height:16px;color:var(--muted)}
+select,input{height:36px;background:var(--raised);color:var(--text);border:1px solid var(--edge);border-radius:8px;padding:0 10px;
+  font:14px/20px var(--sans);min-width:160px;transition:border-color .15s var(--ease)}
+select:hover,input:hover{border-color:var(--edge-strong)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--edge-strong)}
+.btn.ghost:hover{background:var(--raised)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.srcbtn{height:36px;padding:0 14px;background:transparent;color:var(--text-2);border:1px solid var(--edge-strong);border-radius:8px;cursor:pointer;
+  font:14px/20px var(--sans);transition:background-color .15s var(--ease),color .15s var(--ease)}
+.srcbtn:hover{background:var(--panel);color:var(--text)}
+.srcbtn.active{background:var(--raised);color:var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.srcbtn:disabled{opacity:.45;cursor:not-allowed}
+.meta{font:12px/16px var(--mono);color:var(--muted);align-self:center;padding-bottom:0}
+
+/* provenance tag: the signature. every number block names its source */
+.prov{display:inline-flex;align-items:center;gap:6px;font:12px/16px var(--mono);color:var(--muted);margin-left:8px;vertical-align:middle}
+.prov::before{content:"";width:6px;height:6px;border-radius:3px;background:var(--emerald);opacity:.9}
+.prov.mkt::before{background:var(--text-2)}
+.hd{display:flex;align-items:baseline;gap:12px}
+.hd h3{margin-right:auto}
+.hd .prov{margin-left:0}
+
+/* tables */
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font:13px/20px var(--mono)}
+th,td{height:32px;padding:0 8px;text-align:right;border-bottom:1px solid var(--edge);white-space:nowrap}
+th{color:var(--muted);font-weight:400}
+td:first-child,th:first-child{text-align:left}
+tr:last-child td{border-bottom:0}
+tr.head td{color:var(--text);font-weight:500}
+tr.sep td{border-top:1px solid var(--edge-strong)}
+td.dim{color:var(--muted)}
+
+/* figures */
+.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:8px 0 12px}
+.fig .lbl{font-size:12px;line-height:16px;color:var(--muted);margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fig .val{font:500 28px/32px var(--mono);color:var(--text)}
+.fig.lead .val{color:var(--emerald)}
+.fig .sub{font:12px/16px var(--mono);color:var(--muted);margin-top:4px}
+.kv{display:grid;grid-template-columns:1fr auto;gap:0 16px;font:13px/20px var(--sans)}
+.kv span{height:32px;display:flex;align-items:center;border-bottom:1px solid var(--edge);color:var(--text-2)}
+.kv b{height:32px;display:flex;align-items:center;justify-content:flex-end;border-bottom:1px solid var(--edge);font:500 13px/20px var(--mono);color:var(--text)}
+.kv span:nth-last-child(2),.kv b:last-child{border-bottom:0}
+
+/* scoreline matrix: the one rich object */
+.heat{border-collapse:separate;border-spacing:4px;font:12px/16px var(--mono);width:100%;table-layout:fixed}
+.heat td{height:44px;border:0;border-radius:6px;text-align:center;padding:0;color:var(--text)}
+.heat th{height:24px;border:0;color:var(--muted);font-weight:400;text-align:center}
+.heat th:first-child{width:28px}
+.heat td.mode{box-shadow:inset 0 0 0 1.5px var(--emerald)}
+svg{width:100%;height:auto;display:block}
+.err{color:var(--text-2);background:var(--raised);border:1px solid var(--edge);border-radius:8px;padding:8px 12px;font:13px/20px var(--mono)}
+
+/* upcoming: one card per fixture, the model's most likely outcome is the big figure */
+.statusbar .row{margin:8px 0 0}
+.day{margin:24px 0 8px;font:500 13px/20px var(--sans);color:var(--text-2)}
+.day:first-child{margin-top:8px}
+.fx{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr) minmax(0,2fr);gap:24px;align-items:start;margin-bottom:12px;padding:20px 24px}
+.fx .who{min-width:0}
+.fx .teams{font:500 15px/20px var(--sans);color:var(--text)}
+.fx .ko{font:12px/16px var(--mono);color:var(--muted);margin-top:4px}
+.fx .big .lbl{font-size:12px;line-height:16px;color:var(--muted);margin-bottom:4px}
+.fx .big .val{font:500 28px/32px var(--mono);color:var(--emerald)}
+.fx .big .val small{font:400 13px/20px var(--sans);color:var(--text-2);margin-left:8px}
+.fx .bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin:12px 0 6px;background:var(--raised)}
+.fx .bar i{display:block;height:100%;background:#3B4A63}
+.fx .bar i.lead{background:var(--emerald)}
+.fx .trio{display:flex;justify-content:space-between;font:12px/16px var(--mono);color:var(--text-2)}
+.fx .trio b{font-weight:500;color:var(--text)}
+.fx .meta2{font:12px/16px var(--mono);color:var(--muted);margin-top:8px}
+.fx .mkt{min-width:0}
+.fx .mkt table{font-size:12px}
+.fx .mkt th,.fx .mkt td{height:28px;padding:0 6px}
+.fx .warn{font:12px/16px var(--sans);color:var(--text-2);margin-top:8px}
+.empty{padding:32px 24px;color:var(--text-2)}
+@media (max-width:960px){.fx{grid-template-columns:1fr}}
+.foot{margin-top:12px;font-size:12px;line-height:16px;color:var(--text-2)}

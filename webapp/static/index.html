@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ApexQuant Model</title>
+<link rel="stylesheet" href="styles3d.css">
+<link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+<div class="scene">
+  <header class="top">
+    <div>
+      <h1>ApexQuant <span class="muted">Phase 1 model</span></h1>
+      <div class="muted small">Dixon-Coles goal model, five leagues, walk-forward. Paper analysis, not advice</div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-page="upcoming">Upcoming</button>
+      <button class="tab" data-page="backtest">Backtest results</button>
+      <button class="tab" data-page="forecast">Forecast a fixture</button>
+      <button class="tab" data-page="market">Compare to market</button>
+    </nav>
+  </header>
+
+  <!-- PAGE 0: upcoming fixtures, auto-fed -->
+  <section id="page-upcoming" class="page active">
+    <div class="card statusbar">
+      <div class="hd"><h3>Live feed</h3><span class="prov mkt">football-data.co.uk, keyless</span></div>
+      <div class="row">
+        <span id="u-status" class="meta">checking feed</span>
+        <button class="btn ghost" id="u-refresh">Refresh now</button>
+      </div>
+      <p class="cap" id="u-note" style="margin:12px 0 0"></p>
+    </div>
+    <div id="u-list"></div>
+    <div id="u-recent"></div>
+  </section>
+
+  <!-- PAGE 1 -->
+  <section id="page-backtest" class="page">
+    <div id="gate" class="card veto banner"><div class="metric">Loading</div></div>
+    <div class="grid2">
+      <div class="card">
+        <div class="hd"><h3>Log loss vs actual result</h3><span class="prov">model</span><span class="prov mkt">Pinnacle</span></div>
+        <p class="cap">Lower is better. gap = model − closing. Overall, then per season, then per league</p>
+        <div class="tablewrap"><table id="ll-table"></table></div>
+      </div>
+      <div class="card">
+        <div class="hd"><h3>Calibration</h3><span class="prov">model</span><span class="prov mkt">Pinnacle closing</span></div>
+        <p class="cap">Predicted probability decile, pooled over H/D/A, vs observed frequency</p>
+        <div id="calib"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="hd"><h3>CLV distribution by EV bucket</h3><span class="prov mkt">Pinnacle pre-match vs closing</span></div>
+      <p class="cap">CLV = pre-match odds / closing odds − 1, for selections where model EV ≥ 2% against Pinnacle pre-match</p>
+      <div id="clv" class="grid3"></div>
+    </div>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section id="page-forecast" class="page">
+    <div class="card">
+      <h3>Fixture</h3>
+      <div class="row">
+        <label>League <select id="f-league"></select></label>
+        <label>Home <select id="f-home"></select></label>
+        <label>Away <select id="f-away"></select></label>
+        <button class="btn" id="f-go">Forecast</button>
+        <button class="btn ghost" id="f-refit" title="Refit all leagues from ./data">Refit now</button>
+        <span id="f-meta" class="meta"></span>
+      </div>
+    </div>
+    <div id="f-out" class="hidden">
+      <div class="grid-21">
+        <div class="card"><div class="hd"><h3>1X2</h3><span class="prov">model</span></div><div id="f-1x2"></div></div>
+        <div class="card"><div class="hd"><h3>Goals markets</h3><span class="prov">model</span></div><div id="f-goals"></div></div>
+      </div>
+      <div class="grid-32">
+        <div class="card">
+          <div class="hd"><h3>Scoreline matrix</h3><span class="prov">model</span></div>
+          <p class="cap">Rows home goals, columns away goals, shown to 6 each. Mass beyond 6 is in the full matrix but not drawn</p>
+          <div id="f-heat"></div>
+        </div>
+        <div class="stack">
+          <div class="card"><div class="hd"><h3>Most likely scorelines</h3><span class="prov">model</span></div><div id="f-top"></div></div>
+          <div class="card"><div class="hd"><h3>Rates</h3><span class="prov">model</span></div><div id="f-rates"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section id="page-market" class="page">
+    <div class="card">
+      <h3>Source</h3>
+      <div class="row" id="m-sources"></div>
+      <div class="row">
+        <label>League <select id="m-league"></select></label>
+        <label>Home <select id="m-home"></select></label>
+        <label>Away <select id="m-away"></select></label>
+        <label id="m-csv-opts">Use <select id="m-which"><option value="closing">Pinnacle closing</option><option value="pre_match">Pinnacle pre-match</option></select></label>
+        <label class="hidden m-manual">Home odds <input id="m-oh" type="number" step="0.01" min="1.01" value="2.10"></label>
+        <label class="hidden m-manual">Draw odds <input id="m-od" type="number" step="0.01" min="1.01" value="3.40"></label>
+        <label class="hidden m-manual">Away odds <input id="m-oa" type="number" step="0.01" min="1.01" value="3.60"></label>
+        <button class="btn" id="m-go">Compare</button>
+        <span id="m-meta" class="meta"></span>
+      </div>
+    </div>
+    <div id="m-out" class="card hidden">
+      <div class="hd"><h3>Model vs market</h3><span class="prov">model</span><span class="prov mkt" id="m-prov">market</span></div>
+      <div class="tablewrap"><table id="m-table"></table></div>
+      <div class="foot" id="m-foot">Backtest showed this disagreement is model error, not market error (flat-stake return -8.0% per selection).</div>
+    </div>
+  </section>
+</div>
+<script src="static/app.js"></script>
+</body>
+</html>

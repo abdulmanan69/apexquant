@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+unslop/
+backtest/out/run.log
+webapp/cache/uvicorn.log
+webapp/cache/live_status.json

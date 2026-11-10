@@ -1,0 +1,36 @@
+name: Refit and publish
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"      # every 6 hours
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["webapp/**", "backtest/**", "quant_engine.py", "styles3d.css", ".github/workflows/feed.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feed
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy scipy httpx
+      - name: Download, refit, build docs/
+        run: python webapp/build_static.py
+      - name: Commit data and site
+        run: |
+          git config user.name "apexquant-feed"
+          git config user.email "feed@users.noreply.github.com"
+          git add data docs webapp/cache
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "feed: refit $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
