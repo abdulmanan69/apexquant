@@ -54,7 +54,7 @@ let ctxSeq = 0;
 export function info(key, ctx = {}) {
   const id = `c${++ctxSeq}`;
   CTX.set(id, { key, ctx });
-  return `<button type="button" class="info" data-info="${id}" aria-label="What is this?" title="What is this?">?</button>`;
+  return `<button type="button" class="infobtn" data-info="${id}" aria-label="What is this?" title="What is this?">?</button>`;
 }
 function openCallout(btn) {
   const box = document.getElementById('callout');
