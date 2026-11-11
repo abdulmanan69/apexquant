@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexQuant | AEK vs RMA Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 850: '#1E293B', 950: '#0F172A' },
+                        emerald: { 500: '#10B981' },
+                        rose: { 500: '#F43F5E' },
+                        blue: { 500: '#3B82F6' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+        body { background-color: #0F172A; color: #F8FAFC; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
+        .gradient-text { background: linear-gradient(90deg, #3B82F6, #10B981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 p-4 z-50 glass flex justify-between items-center px-8 border-b border-slate-700">
+        <div>
+            <h1 class="text-xl font-bold tracking-tight text-white">ApexQuant <span class="text-blue-500">Live</span></h1>
+            <p class="text-[10px] uppercase tracking-widest text-slate-400">Nov 4, 2026 | AEK vs Real Madrid</p>
+        </div>
+        <div class="px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/50 text-emerald-400 font-mono text-sm">
+            FINAL PREDICTION: W2 (+1.36% EV)
+        </div>
+    </header>
+
+    <main class="mt-20 max-w-7xl mx-auto space-y-8">
+
+        <!-- Comparison Zone -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="text-slate-400 mb-4 font-semibold uppercase text-xs">1xBet (Soft Market)</h3>
+                <img src="https://opal.google/board/blobs/e696b8d6-62e9-4a31-bb61-4020a67fcdd2" alt="media_1" class="w-full h-32 object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity mb-4">
+                <table class="w-full text-sm font-mono text-left">
+                    <tr class="border-b border-slate-700/50"><td class="py-2">W2 (Real Madrid)</td><td class="text-right text-emerald-400">1.27</td></tr>
+                    <tr class="border-b border-slate-700/50"><td class="py-2">Draw</td><td class="text-right">7.11</td></tr>
+                </table>
+            </div>
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="text-slate-400 mb-4 font-semibold uppercase text-xs">Pinnacle (Sharp Market)</h3>
+                <img src="https://opal.google/board/blobs/bbcca0f8-a761-432a-a744-432a82517bcd" alt="media_3" class="w-full h-32 object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity mb-4">
+                <table class="w-full text-sm font-mono text-left">
+                    <tr class="border-b border-slate-700/50"><td class="py-2">W2 (Real Madrid)</td><td class="text-right text-emerald-400">1.212</td></tr>
+                    <tr class="border-b border-slate-700/50"><td class="py-2">Draw</td><td class="text-right">7.61</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Risk Dashboard -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass p-5 rounded-xl border-l-4 border-emerald-500">
+                <h4 class="text-xs uppercase text-slate-400">1X2 Edge</h4>
+                <p class="text-2xl font-bold mt-2">+1.36% <span class="text-xs text-emerald-500">EV</span></p>
+            </div>
+            <div class="glass p-5 rounded-xl border-l-4 border-blue-500">
+                <h4 class="text-xs uppercase text-slate-400">Handicap</h4>
+                <p class="text-2xl font-bold mt-2">-2.5% <span class="text-xs text-rose-500">Var</span></p>
+            </div>
+            <div class="glass p-5 rounded-xl border-l-4 border-amber-500">
+                <h4 class="text-xs uppercase text-slate-400">Totals</h4>
+                <p class="text-2xl font-bold mt-2">O 3.75 <span class="text-xs text-slate-400">Pinnacle</span></p>
+            </div>
+        </section>
+
+        <!-- Analytics Grid -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="glass p-8 rounded-2xl">
+                <h2 class="text-xl font-bold mb-6">Tactical Assessment</h2>
+                <div class="space-y-6 text-sm leading-relaxed text-slate-300">
+                    <p>AEK Athens faces significant personnel shortages, notably the loss of starting GK <strong>Thomas Strakosha</strong>. This defensive instability, coupled with Real Madrid's 4-2-3-1 vertical transition, creates a high-scoring probability.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://opal.google/board/blobs/12b48fc6-0a3d-4675-b12d-3db994e18f1e" alt="media_2" class="rounded-lg bg-slate-900 border border-slate-700 h-24 w-full">
+                        <img src="https://opal.google/board/blobs/03fa35fc-5c74-4f74-b414-b39450c1ca27" alt="media_4" class="rounded-lg bg-slate-900 border border-slate-700 h-24 w-full">
+                    </div>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-2xl font-mono text-xs">
+                <h2 class="text-xl font-bold mb-6 font-sans">Active Veto Rules</h2>
+                <ul class="space-y-3 text-slate-400">
+                    <li class="flex justify-between"><span>VR-01: Reject EV &lt; +1.0%</span> <span class="text-emerald-500">ACTIVE</span></li>
+                    <li class="flex justify-between"><span>VR-02: GK Injury Protocol</span> <span class="text-emerald-500">TRIGGERED</span></li>
+                    <li class="flex justify-between"><span>VR-04: Reject Handicap</span> <span class="text-rose-500">WARNING</span></li>
+                    <li class="flex justify-between"><span>VR-07: Odds Drop Monitor</span> <span class="text-emerald-500">PASS</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Final Implication -->
+        <section class="glass p-8 rounded-2xl text-center">
+            <h2 class="text-2xl font-bold mb-4 gradient-text">Investment Thesis</h2>
+            <p class="max-w-2xl mx-auto text-slate-300">Mathematical models indicate 1xBet is significantly trailing sharp markets on Real Madrid victory. Correlated plays including <strong>Over 3.5 Goals</strong> and <strong>Luka Jović Anytime Scorer</strong> offer the most favorable risk-adjusted returns.</p>
+        </section>
+
+    </main>
+</body>
+</html>

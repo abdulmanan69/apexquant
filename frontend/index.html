@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ApexQuant</title>
+  <meta name="description" content="ApexQuant v10.0: football and tennis quantitative analysis suite. Sharp vs soft prices, de-vigged, blended with a model, audited.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1.5' y='1.5' width='13' height='13' rx='2.5' fill='none' stroke='%230F6CBD' stroke-width='2'/%3E%3Crect x='5' y='5' width='6' height='6' rx='1' fill='%230F6CBD'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="appbar" role="banner">
+    <button class="iconbtn" id="navToggle" aria-label="Toggle navigation" title="Toggle navigation"></button>
+    <a class="brand" href="#/overview"><span class="brand-mark" aria-hidden="true"></span><span>ApexQuant</span><span class="brand-ver">v10.0</span></a>
+    <div class="search" role="search">
+      <span class="search-ic" aria-hidden="true"></span>
+      <input id="globalSearch" type="search" placeholder="Search matches" aria-label="Search matches">
+    </div>
+    <div class="appbar-right">
+      <div class="clock" id="clock" aria-live="off" title="Pakistan Standard Time (UTC+5)"><span class="num" id="clockTime">--:--:--</span><span class="clock-tz">PKT</span></div>
+      <div class="statuschips" id="statusChips" aria-label="Data source status"></div>
+      <button class="iconbtn" id="themeToggle" aria-label="Toggle dark theme" title="Toggle dark theme"></button>
+      <a class="iconbtn" href="#/settings" aria-label="Settings" title="Settings" id="settingsBtn"></a>
+      <a class="iconbtn" href="#/help" aria-label="Glossary and help" title="Glossary and help" id="helpBtn"></a>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="rail" id="rail" aria-label="Main navigation">
+      <ul id="navList"></ul>
+      <div class="rail-foot">
+        <div class="rail-meta" id="railMeta"></div>
+      </div>
+    </nav>
+
+    <div class="main">
+      <div class="commandbar" id="commandBar" role="toolbar" aria-label="Commands"></div>
+      <main id="content" class="content" tabindex="-1"></main>
+      <footer class="foot">
+        <span>Analytical tool only. No outcome is guaranteed. Bet responsibly and only where legal.</span>
+        <span class="foot-right">Every edge shown is a model-estimated edge. ApexQuant v10.0 by Muhammad Atif.</span>
+      </footer>
+    </div>
+  </div>
+
+  <aside class="sidepanel" id="sidePanel" aria-hidden="true" role="dialog" aria-labelledby="sidePanelTitle">
+    <div class="sidepanel-head"><h2 id="sidePanelTitle">Panel</h2><button class="iconbtn" id="sidePanelClose" aria-label="Close panel"></button></div>
+    <div class="sidepanel-body" id="sidePanelBody"></div>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <div class="callout" id="callout" role="dialog" aria-modal="false" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <dialog class="zoom" id="zoom"><img id="zoomImg" alt="Screenshot preview"><button class="btn" id="zoomClose">Close</button></dialog>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>

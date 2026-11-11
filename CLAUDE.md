@@ -68,6 +68,35 @@ Web app (2026-11-11), webapp/: FastAPI + one static page, see README.md.
   ApexQuant is its own git repo (initialised 2026-11-11), separate from the parent site.
 - Phase 2 and Phase 3 pipeline fixes still not started. No staking, no bets table.
 
+## ApexQuant v10.0 suite (2026-11-11)
+The user supplied a new spec: reference/ApexQuant v10.0 – Master Build Prompt.pdf (12
+sections, 6 build phases), reference/ApexQuant Arsenal Chelsea Match Dashboard.png (the
+Fluent-style light UI to follow) and reference/ApexQuant-saved (2) (1).html (a dark glass
+mock; the PDF forbids glassmorphism, so only its layout ideas were used). Built in full:
+- backend/ (config, schemas, data_fetcher, quant_engine, analysis, auditor, main),
+  frontend/ (Fluent 2 / Material 3 tokens, 7 pages, match detail with 6 tabs, (?) callouts),
+  tests/ (40 tests, offline). Run: uvicorn backend.main:app --port 8010.
+- backend/quant_engine.py is standard library only and pure: power-method de-vig
+  (bisection stands in for brentq), push-exact quarter lines, Dixon-Coles markets, exact
+  tennis Markov chain (point/game/tiebreak/set/match with serve alternation), Elo, blend,
+  tiers. The whitepaper's root quant_engine.py is untouched.
+- EV in this suite is sharp-vs-soft (Pinnacle de-vigged, blended 70/30 with the model)
+  against the soft price. The Phase 1 gate result still stands and is the reason the model
+  carries only 30% weight; the model is never used alone for EV.
+- Football model inputs come from webapp/ratings.py (goal-based Dixon-Coles ratings). No
+  xG feed exists; teams outside the five leagues get league-average rates and a Low badge.
+  Tennis has no free serve-stat feed: inputs are user-entered, else Elo, else the sharp
+  price (flagged Low), else 50/50.
+- Roman Urdu report and the "Verify with Claude" prompt are deterministic templates over
+  fetched facts. No LLM touches a number or a verdict; OCR is the only LLM call.
+- ESPN DraftKings prices are used as a labelled fallback soft book when the Odds API is
+  absent; a missing Pinnacle price means no EV, shown as such.
+- Keys: environment only, never logged or returned. vault/ (CSV, SQLite cache, settings)
+  is git-ignored except for the folder.
+- Known problems 4-9 above concern the whitepaper's main.py and remain as recorded; the
+  v10.0 suite prices both sides and all markets, populates the sharp reference, sends the
+  image to the vision call, and treats empty payloads as failure in its own code.
+
 ## Build order
 Phase 0: Setup
 - Extract the Appendix A files from the PDF into this folder.
